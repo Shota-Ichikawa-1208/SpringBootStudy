@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+main{
+	display: flex;
+	justify-content: center;
+}
+.main_div{
+	margin-top: 3vw;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	border:0.75px solid black;
+	border-radius: 2%;
+	padding: 10px;
+}
+form{
+	text-align: center;
+	
+}
+form input {
+	width: 90%;
+}
+form p {
+	margin-bottom: 0;
+	text-align: start;
+}
+.login_btn{
+	border: none;
+	margin-top: 15px;
+	font-size: 15px;
+	background: yellow;
+	padding: 6px 15px;
+	border-radius: 6px;
+	display: inline-block;
+	transition: .3s;
+}
+.login_btn:hover{
+	transform: scale(1.1);
+}
+.account_div{
+	text-align: center;
+}
+.account_div button{
+	margin-top: 10px;
+	width: 60%;
+	border: none;
+	border-radius: 6px;
+	font-size: 15px;
+	background:#cff9d4;
+	display: inline-block;
+	transition: .3s;
+}
+.account_div button:hover{
+	transform: scale(1.1);
+}
+.account_register_btn{
+	margin-top: 15px;
+	width: 80%;
+	border: none;
+	border-radius: 6px;
+	font-size: 20px;
+	background: #f8a291;
+	display: inline-block;
+	transition: .3s;
+}
+.account_register_btn:hover{
+	transform: scale(1.1);
+}
+.radio_div{
+	margin-top: 10px;
+/*	display: flex;*/
+/*	align-items: center;*/
+}
+
+.radio_btn_div {
+	display: inline-block;
+    align-items: center;
+    flex-direction: column; 
+}

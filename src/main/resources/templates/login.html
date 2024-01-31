@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/login.css}" />
+<title>ログイン画面</title>
+</head>
+<body>
+<main>
+<div class="main_div">
+<h1>ログイン</h1>
+<p>ユーザーIDとパスワードを入力してください。</p>
+	<form th:action="@{/login}" method="post">
+		<label><p>ユーザーID</p><input type="text" name="userId" required minlength = 5 maxlength = 32></label><br>
+		<label><p>パスワード</p><input type="password" name="password" required minlength = 5 maxlength = 32></label><br>
+		<input type="submit" value="ログイン" class="login_btn">
+	</form>
+	<div class="account_div">
+	<p>↓新規アカウント登録はこちらから↓<br>
+	<a th:href="@{user/signup}"><button class="newAccount_btn">新規アカウント登録</button></a>
+	</p>
+	</div>
+</div>
+</main>	
+</body>
+</html>
