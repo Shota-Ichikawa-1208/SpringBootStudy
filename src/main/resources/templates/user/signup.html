@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/webjars/biitstrap/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/css/login.css}" />
 <title th:text="#{user.signup.title}"></title>
 <!--<script>-->
@@ -21,19 +22,37 @@
 <h1 th:text="#{user.signup.title}"></h1>
 <p>すべての項目を入力してください</p>
 <form action="/user/signup" method="Post" th:object="${signupForm}">
-<label><p th:text="#{userId}"></p><input type="text" th:field="*{userId}" required minlength = 5 maxlength = 32 onblur="validateInput(this)"></label><br>
-<label><p th:text="#{password}"></p><input type="password"  th:field="*{password}" required minlength = 5 maxlength = 32 onblur="validateInput(this)"></label><br>
-<label><p th:text="#{userName}"></p><input type="text"  th:field="*{userName}" required></label><br>
-<label><p th:text="#{birthday}"></p><input type="text"  th:field="*{birthday}" required placeholder="yyyy/MM/dd"></label><br>
-<label><p th:text="#{age}"></p><input type="text"  th:field="*{age}" required></label><br>
+<label>
+	<p th:text="#{userId}"></p><input type="text" th:field="*{userId}" th:errorclass="is-invalid" >
+	<div class="invalid-feedback" th:errors="*{userId}"></div>
+</label><br>
+<label>
+	<p th:text="#{password}"></p><input type="password"  th:field="*{password}" th:errorclass="is-invalid" >
+	<div class="invalid-feedback" th:errors="*{password}"></div>
+</label><br>
+<label>
+	<p th:text="#{userName}"></p><input type="text"  th:field="*{userName}">
+	<div class="invalid-feedback" th:errors="*{userName}"></div>
+</label><br>
+<label>
+	<p th:text="#{birthday}"></p><input type="text"  th:field="*{birthday}" th:errorclass="is-invalid"  placeholder="yyyy/MM/dd">
+	<div class="invalid-feedback" th:errors="*{birthday}"></div>
+</label><br>
+<label>
+	<p th:text="#{age}"></p><input type="text"  th:field="*{age}" th:errorclass="is-invalid" >
+	<div class="invalid-feedback" th:errors="*{age}"></div>
+</label><br>
 
 <!--sessionに登録した変数をとってこれてる genderMap-->
 <div class="radio_div">
 	<div th:each="item:${genderMap}" class="radio_btn_div">
 		
-			<input type="radio"  th:field="*{gender}" th:value="${item.value}" />
+			<input type="radio"  th:field="*{gender}" th:errorclass="is-invalid" th:value="${item.value}" />
 			<span th:text="${item.key}"></span>
 	</div>
+	
+	<div class="text-danger" th:if="${#fields.hasErrors('gender')}"
+		th:errors="*{gender}"></div>
 </div>
 <input class ="account_register_btn" type="submit" th:value="#{user.signup.btn}">
 </form>

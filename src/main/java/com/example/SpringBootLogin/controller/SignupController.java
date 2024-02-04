@@ -6,12 +6,15 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.SpringBootLogin.Applicatin.Service.UserApplicationService;
+import com.example.SpringBootLogin.form.GroupOrder;
 import com.example.SpringBootLogin.form.SignupForm;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,18 +28,24 @@ public class SignupController {
 	private UserApplicationService userApplicationService;
 	
 	@GetMapping("/signup")
-	public String getSinup(Model model, Locale locale,
+	public String getSignup(Model model, Locale locale,
 			@ModelAttribute SignupForm form) {
-		Map<String, Integer> genderMap = userApplicationService.getGenderMap();
+		Map<String, Integer> genderMap = userApplicationService.getGenderMap(locale);
 		
 //		sessionに追加のイメージ？
 		model.addAttribute("genderMap", genderMap);
 		return "/user/signup";
 	}
 		
-	//後でユーザーページに飛ばす処理記述リダイレクトする
 	@PostMapping("/signup")
-	public String postSignup(Model model, @ModelAttribute SignupForm form) {
+	public String postSignup(Model model,Locale locale, @ModelAttribute@Validated(GroupOrder.class)SignupForm form,
+			BindingResult bindingResult) {
+		
+//		入力チェックの結果
+		if(bindingResult.hasErrors()) {
+			//ユーザー登録画面に戻す
+			return getSignup(model,locale,form);
+		}
 		String userName = form.getUserName();
 		model.addAttribute("userName", userName);
 		log.info(form.toString());
