@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mapperとxmlのマッピング -->
+<mapper namespace="com.example.SpringBootLogin.repository.UserMapper">
+	
+	<!-- ユーザー１件登録-->
+	<insert id="insertOne">
+		insert into m_user(
+			user_name
+			,user_id
+			,password
+			,birthday
+			,age
+			,gender
+			,role
+		 )
+		 values(
+		 	#{userName}
+		 	,#{userId}
+		 	,#{password}
+		 	,#{birthday}
+		 	,#{age}
+		 	,#{gender}
+		 	,#{role}
+		 )
+		 
+	</insert>
+</mapper>

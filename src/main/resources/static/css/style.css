@@ -1,0 +1,276 @@
+/*index.htmlのカルーセルの調整*/
+.carousel-box{
+  margin-top: 80px;
+}
+
+/* 画像を囲むdiv要素のサイズ調整 */
+.size {
+  width: 350px;
+  height: 450px;
+}
+
+/* pc画面表示の際の中央寄せ */
+@media screen and (min-width: 768px) {
+  .img-position {
+    display: flex;
+    justify-content: right;
+  }
+
+  .text-position {
+    display: flex;
+    justify-content: center;
+  }
+
+  .color-position {
+    display: flex;
+    flex-direction: row;
+    /* 重要　ユニクロありがとう*/
+    justify-content: left;
+  }
+
+  .size-position {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+  }
+}
+
+/* スマホ表示の際の中央寄せ */
+@media screen and (max-width: 767px) {
+  .img-position {
+    display: flex;
+    justify-content: center;
+  }
+
+  .text-position {
+    display: flex;
+    justify-content: center;
+  }
+
+  .color-position {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+  }
+
+  .size-position {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+  }
+  .select-box{
+	margin-left: 250px;
+  }
+}
+
+/* 選択ボックスのサイズ調整 */
+
+/* 色 */
+.color-label {
+  padding: 5px 20px 7px 0px;
+}
+
+.color-box {
+  padding-bottom: 0px;
+  height: 70px;
+}
+
+.radio-no-style input[type="radio"]{
+  display: none;        /*チェックボックスの非表示*/
+}
+/*--チェックボックス直後のlabel--*/
+.radio-no-style input[type="radio"] + label {
+  margin     : 5px;             /* labelの間隔  */
+  opacity    : 0.7;             /* 透明度       */
+  cursor     : pointer;         /* カーソル設定 */
+  transition : .2s;             /* なめらか変化 */
+  transform  : scale(0.9, 0.9); /* 少し小さく   */
+}
+/*--選択されたチェックボックス直後のラベル*/
+.radio-no-style  input[type="radio"]:checked + label {
+  opacity    : 1;               /* 透明度       */
+  transform  : scale(1, 1);     /* 原寸に戻す   */
+}
+/*--選択されたチェックボックス直後のラベル--*/
+.radio-no-style  input[type="radio"]:not(:checked) + label:hover {
+  opacity    : 0.9;             /* 透明度       */
+}
+/* サイズ */
+.size-label {
+  padding: 5px 20px 0px 0px;
+}
+
+.size-box {
+  padding: 5px 20px 0px 0px;
+  margin: 0px;
+  height: 80px;
+}
+
+.size-btn {
+  margin: 0 5px;
+  text-align: center;
+  width: 100px;
+  height: 50px;
+}
+
+/* 値段 */
+.price-box {
+  margin-top: 25px;
+}
+
+.price {
+  font-size: 200%;
+  font-weight: 500;
+}
+
+/* 数量 */
+.quantity-label {
+  padding: 5px 20px 0px 0px;
+  margin-bottom: 0;
+ 
+}
+
+.quantity-box {
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  margin-top: 5px;
+  text-align: center;
+  font-size: large;
+  font-style: italic;
+  font-weight: 500;
+}
+/*購入ボタン*/
+#purchase_button{
+  font-size: 20px;
+  width: 200px;
+  height: 50px;
+  margin-left: vw;
+  
+ 
+  color: #f2f2f5;
+  border: none;
+ background: rgb(245, 9, 9);
+ border-radius: 10px;
+ 
+ transition-duration: .4s;
+ 
+ }
+#purchase_button:hover {   /*ボタンクリック浮き上がり*/
+  transform: scale(1.1);
+}
+#purchase_button:active {   
+  opacity: 0.5;
+}
+
+.cart-section {
+  display: flex;
+  
+  align-items: center; /* コンテンツを水平方向に中央寄せ */
+}
+
+.cart-controls {
+  width: fit-content;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 10px; /* 必要に応じてマージンを調整 */
+}
+
+.quantity-label {
+  margin-bottom: 5px;
+}
+/* 画像ズーム */
+body {
+  position: relative;
+}
+
+#ZB {
+  position: absolute;
+  top: 0;
+
+  width: 100vw;
+  height: 80vh;
+
+  background-color: rgba(0, 0, 0, 0.8);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  display: none;
+}
+
+#ZI {
+  height: 100%;
+  width: 30%;
+  z-index: 99;
+  /*画像クリック拡大最前面にする設定*/
+}
+
+.ZB img {
+  height: 100%;
+  width: 30%;
+  border: solid 5px #fff;
+}
+
+/* ここからナビバーの設定 */
+
+/* ハンバーガーメニューの設定 */
+@media screen and (min-width: 768px) {
+  /*pc画面でのナビバー設定*/
+  /*pc画面で消える*/
+  .cart_768_none {
+    display: none;
+  }
+  .nav-item-style {
+    width: 100px;
+  }
+  .nav-text-style {
+    margin: 0 0;
+    padding: 0 0;
+  }
+  .logo {
+    padding-right: 0;
+    margin-left: 10vw;
+  }
+  .cart {
+    margin-right: 5vw;
+  }
+  .nav-style {
+    /*メニューの画面中央表示*/
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 767px) {
+  /*スマホ画面でのナビバー設定*/
+  .cart_767_none {
+    display: none;
+  }
+   .cart_768_none {
+    display:flex;
+    flex-direction: row;
+  }
+  .nav-text-style {
+    text-align: right;
+    margin: 0 0;
+    padding: 0 0;
+  }
+}
+
+.menu-font-style {
+  font-size: 150%;
+  padding: 5px 5px;
+  margin: auto;
+  
+}
+
+/*メニューのマイページボタンの設定*/
+.menu_MyPage_btn{
+	border: none;
+	background: transparent;
+	
+}
+.a{
+	max-width: 1000px;
+}

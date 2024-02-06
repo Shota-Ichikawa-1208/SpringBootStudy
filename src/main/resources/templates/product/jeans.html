@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+ <link rel="stylesheet" th:href="@{css/style.css}" />
+<title>Jeans</title>
+</head>
+<body>
+	<body style="padding-top: 5rem">
+    <div class="container-md">
+      <!--画面幅固定-->
+      <div class="row">
+        <div class="container-md a">
+          <div class="row">
+            <!--ハンバーガーメニュー-->
+ <header>
+            <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top navbar-style">
+              <div class="container">
+                <a href="/"><img src="images/icon/shop_icon02.png"class="navbar-brand logo" ></a>
+
+                <ul class="navbar-nav ms-auto cart_768_none">
+                  <!--カートアイコン スマホ表記でハンバーガーの横に出す-->
+                   <li class="nav-item">
+					 <form action="/login_form" method="get">
+					 <button class="nav-link"><img src="images/login_icon.png" width="70px" height="63px"
+                        title="ログイン" /></button>
+                     </form>
+				  </li>
+                  <li class="nav-item">
+                    <a href="order.jsp" class="nav-link"><img src="images/cart_icon.png" width="70px" height="70px"
+                        title="カートへ" /></a>
+                  </li>
+                </ul>
+                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main_nav">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <!--メニューの画面中央表示*/-->
+                <div class="collapse navbar-collapse nav-style" id="main_nav">
+                  <ul class="navbar-nav ">
+                    <li class="nav-item">
+                      <a href="/" class="nav-link">
+                        <p class="nav-text-style">
+                          <strong class="menu-font-style">HOME</strong>
+                        </p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/t-shirt" class="nav-link">
+                        <p class="nav-text-style">
+                          <strong class="menu-font-style">T-shirt</strong>
+                        </p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/jeans" class="nav-link">
+                        <p class="nav-text-style">
+                          <strong class="menu-font-style">Jeans</strong>
+                        </p>
+                      </a>
+                    </li>
+                    <li class="nav-item ms-auto">
+                        <p class="nav-text-style">
+						<form action="/login_form" method="get">
+                          <strong><input class="nav-link menu-font-style menu_MyPage_btn" type="submit" value="MyPage"></strong>
+                         </form>
+                        </p>
+                      
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <ul class="navbar-nav ms-auto cart_767_none">
+                <!--カートアイコン pc表示で画面右端表示-->
+                 <li class="nav-item">
+				 <li class="nav-item">
+					 <form action="/login_form" method="get">
+					 <button class="nav-link"><img src="images/login_icon.png" width="70px" height="63px"
+                        title="ログイン" /></button>
+                     </form>
+				  </li>
+                
+				  </li>
+                  <li class="nav-item">
+                <li class="nav-item">
+                  <a href="order.jsp" class="nav-link cart"><img src="images/cart_icon.png" width="70px"
+                      height="70px" title="カートへ" /></a>
+                </li>
+              </ul>
+            </nav>
+          </header>
+            <h1 class="mt-5 border-bottom border-dark border-2 pb-1">
+              ジーンズ色選択
+            </h1>
+<div class="cart-section">            
+            <div class="row g-5 text-position">
+              <div class="col-md-5 img-position">
+                <div class="tab-content bg-dark bg-opacity-10 p-3 size">
+                  <div class="tab-pane fade show active" id="black">
+                    <img src="images/Black-Pants.png" class="zoom" />
+                  </div>
+                  <div class="tab-pane fade" id="brown">
+                    <img src="images/Brown-Pants.png" class="zoom" />
+                  </div>
+                  <div class="tab-pane fade" id="deep-blue">
+                    <img src="images/Deep-Bule-Pants.png" class="zoom" />
+                  </div>
+                  <div class="tab-pane fade" id="green">
+                    <img src="images/Green-Pants.png" class="zoom" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-5 select-box">
+                <div class="color-label">
+                  <label class="label-position">色 : </label>
+                </div>
+                <form  onsubmit="addToCart(event);">
+                  <div class="form-group">
+                    <div
+                      class="list-group color-position color-box radio-no-style"
+                    >
+                      <!-- ボタンの横並び設定 -->
+
+                      <input
+                        type="radio"
+                        name="product_color"
+                        id="c1"
+                        class=""
+                        value="jジーンズ-Black"
+                        href="#black"
+                        data-bs-toggle="list"
+                        checked
+                      />
+                      <label for="c1">
+                        <img src="images\btn\Black_btn.png" alt="黒" />
+                      </label>
+
+                      <input
+                        type="radio"
+                        name="product_color"
+                        id="c2"
+                        value="jジーンズ-Brown"
+                        href="#brown"
+                        class=""
+                        data-bs-toggle="list"
+                      />
+                      <label for="c2">
+                        <img src="images\btn\Brown_btn.png" alt="茶" />
+                      </label>
+                      <input
+                        type="radio"
+                        name="product_color"
+                        id="c3"
+                        value="jジーンズ-DeepBlue"
+                        href="#deep-blue"
+                        class=""
+                        data-bs-toggle="list"
+                      />
+                      <label for="c3">
+                        <img src="images\btn\Blue_btn.png" alt="青" />
+                      </label>
+                      <input
+                        type="radio"
+                        name="product_color"
+                        id="c4"
+                        value="jジーンズ-Green"
+                        href="#green"
+                        class=""
+                        data-bs-toggle="list"
+                      />
+                      <label for="c4">
+                        <img src="images\btn\Green_btn.png" alt="緑" />
+                      </label>
+                    </div>
+
+                    <div class="size-label">
+                      <p><output id="sizeAnswer_J">サイズ : </output></p>
+                    </div>
+                    <div
+                      class="list-group size-position size-box radio-no-style"
+                    >
+                      <input
+                        type="radio"
+                        name="size"
+                        id="size-1"
+                        value="75"
+                        class="size-btn btn list-group-item list-group-item-action px-0"
+                        data-bs-toggle="list"
+                        onclick="sizeAnswer_75()"
+                      />
+                      <label for="size-1">
+                        <img src="images\Size_btn\J_75_btn.png" alt="黒" />
+                      </label>
+
+                      <input
+                        type="radio"
+                        name="size"
+                        id="size-2"
+                        value="80"
+                        class="size-btn btn list-group-item list-group-item-action px-0"
+                        data-bs-toggle="list"
+                        onclick="sizeAnswer_80()"
+                        checked
+                      />
+                      <label for="size-2">
+                        <img src="images\Size_btn\J_80_btn.png" alt="黒" />
+                      </label>
+
+                      <input
+                        type="radio"
+                        name="size"
+                        id="size-3"
+                        value="85"
+                        class="size-btn btn list-group-item list-group-item-action px-0"
+                        data-bs-toggle="list"
+                        onclick="sizeAnswer_85()"
+                      />
+                      <label for="size-3">
+                        <img src="images\Size_btn\J_85_btn.png" alt="黒" />
+                      </label>
+
+                      <input
+                        type="radio"
+                        name="size"
+                        id="size-4"
+                        value="90"
+                        class="size-btn btn list-group-item list-group-item-action px-0"
+                        data-bs-toggle="list"
+                        onclick="sizeAnswer_90()"
+                      />
+                      <label for="size-4">
+                        <img src="images\Size_btn\J_90_btn.png" alt="黒" />
+                      </label>
+
+                      <input
+                        type="radio"
+                        name="size"
+                        id="size-5"
+                        value="95"
+                        class="size-btn btn list-group-item list-group-item-action px-0"
+                        data-bs-toggle="list"
+                        onclick="sizeAnswer_95()"
+                      />
+                      <label for="size-5">
+                        <img src="images\Size_btn\J_95_btn.png" alt="黒" />
+                      </label>
+
+                      <input
+                        type="radio"
+                        name="size"
+                        id="size-6"
+                        value="100"
+                        class="size-btn btn list-group-item list-group-item-action px-0"
+                        data-bs-toggle="list"
+                        onclick="sizeAnswer_100()"
+                      />
+                      <label for="size-6">
+                        <img src="images\Size_btn\J_100_btn.png" alt="黒" />
+                      </label>
+                    </div>
+                    <div class="price-box">
+                      <p class="price">
+                        <output id="total_amount">¥3,980</output>
+                      </p>
+                    </div>
+
+                    <!-- 合計金額表示 -->
+<div class="cart-controls">
+                    <div class="quantity-label">数量 :
+
+                    <select
+                      name="quantity"
+                      id="quantity"
+                      class="quantity-box"
+                      onchange="Jeans_choice_total()"
+                    >
+                      <option name="quantity" value="1">1</option>
+                      <option name="quantity" value="2">2</option>
+                      <option name="quantity" value="3">3</option>
+                      <option name="quantity" value="4">4</option>
+                      <option name="quantity" value="5">5</option>
+                      <option name="quantity" value="6">6</option>
+                      <option name="quantity" value="7">7</option>
+                      <option name="quantity" value="8">8</option>
+                    </select>
+                    </div>
+                    <input
+                      type="submit"
+                      value="カートへ入れる"
+                      id="purchase_button"
+                    />
+                    
+</div>                    
+                  </div>
+                </form>
+              </div>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	<script th:src="@{/webjars/bootstrap/js/5.3.1/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+</body>
+</html>

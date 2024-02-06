@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+.header{
+	margin-bottom: 40px;
+}
+/*divとtableの大まかな配置指定*/
+h2{
+	color: #fca4ff;
+}
+#main_div{
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+/*PC表示の設定*/
+@media screen and (min-width:768px){
+	.choice_table{
+	width: 70%;
+}
+.price_table{
+	width:20vw;
+	margin-left: 10%;
+}
+}
+/*スマホ表示の設定*/
+@media screen and (max-width: 768px){
+	h2{
+		text-align: center;
+	}
+	#main_div{
+		display: flex;
+		justify-content: center;
+		align-items: end;
+		flex-direction: column;
+	}
+	.choice_table{
+		width: 90%;
+	}
+	.price_table{
+		width:30vw;
+		margin-top: 40px;
+		margin-right: 20px;
+	}
+}
+/*.choice_tableのレイアウト*/
+.choice_table th{
+	border-bottom: 3px solid black;
+	text-align: center;
+}
+.choice_table_td{
+	border-bottom: 1px dotted black;
+	text-align: center;
+}
+
+.choice_table_delet_btn{
+	text-align: start;
+	padding-left: 50px;
+	width: 20%;
+}
+.last_choice_table_td{
+	border-top:3px solid black !important;
+}
+/*.price_tableのレイアウト*/
+.price_table{
+	margin-bottom: 27px;
+	background-color: #f0f0f0;
+}
+.price_table td {
+	text-align: end;
+}
+.tax{
+	font-weight: normal;
+	font-size: medium;
+}
+/*取り消しボタンのレイアウト*/
+#delete_button{
+	font-size: large;
+	color:black;
+    border: none;
+	border-radius: 10px;
+	background-color: yellow;
+	transition-duration: .4s;
+}
+/*注文確定ボタン設定*/
+.order_from{
+	text-align: end;
+}
+#order_button{
+  font-size: 20px;
+  width: 200px;
+  height: 50px;
+  
+  color: #f2f2f5;
+  border: none;
+ background-color: rgb(245, 9, 9);
+ border-radius: 10px;
+ 
+ transition-duration: .4s;
+}
+#order_button:hover {   
+  transform: scale(1.1);
+}
+#order_button:active {   
+  opacity: 0.5;
+}
+@media screen and (max-width:768px){
+	.price_table_div{
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 0;
+	}
+	.price_table{
+		position: absolute;
+		left: 10vw;
+		margin-top: -10px;
+	}
+	.order_from{
+		position: relative;
+		
+	}
+}
+
+/*MyPage*/
+.MyPage_main{
+	text-align: center;
+}
+.MyPage_main h1{
+	margin-bottom: 30px;
+}
+.logout_div {
+	text-align: center;
+}
+.logout_div h2{
+	color: orange;
+}
+.order_table table{
+	margin:0 auto;
+}
+.logout_div{
+	display: flex;
+	
+}
+.logout_div h2{
+	flex-grow: 5;
+}
+.logout_div form{
+	flex-grow: 3;
+}
