@@ -9,9 +9,15 @@
 <div class="main_div">
 <h1>ログイン</h1>
 <p>ユーザーIDとパスワードを入力してください。</p>
-	<form th:action="@{/login}" method="post">
-		<label><p>ユーザーID</p><input type="text" name="userId" required minlength = 5 maxlength = 32></label><br>
-		<label><p>パスワード</p><input type="password" name="password" required minlength = 5 maxlength = 32></label><br>
+	<form th:action="@{/login}" method="post" th:object="${signupForm}">
+		<label>
+			<p th:text="#{password}"></p><input type="password"  th:field="*{password}" th:errorclass="is-invalid" >
+			<div class="invalid-feedback" th:errors="*{password}"></div>
+		</label><br>
+		<label>
+			<p th:text="#{userName}"></p><input type="text"  th:field="*{userName}">
+			<div class="invalid-feedback" th:errors="*{userName}"></div>
+		</label><br>
 		<input type="submit" value="ログイン" class="login_btn">
 	</form>
 	<div class="account_div">

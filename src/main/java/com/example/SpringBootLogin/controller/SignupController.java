@@ -37,7 +37,8 @@ public class SignupController {
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	@Autowired PasswordHash passwordHash;
+	@Autowired 
+	PasswordHash passwordHash;
 	
 	@GetMapping("/signup")
 	public String getSignup(Model model, Locale locale,

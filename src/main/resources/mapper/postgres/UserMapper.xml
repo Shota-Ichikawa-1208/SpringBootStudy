@@ -3,6 +3,17 @@
 
 <!--Mapperとxmlのマッピング -->
 <mapper namespace="com.example.SpringBootLogin.repository.UserMapper">
+
+<!-- マッピング定義-->
+<resultMap type="com.example.SpringBootLogin.domain.user.model.MUser" id="user">
+	<id column="user_name" property="userName" />
+	<result column="user_id" property="userId" />
+	<result column="password" property="password" />
+	<result column="birthday" property="birthday" />
+	<result column="age" property="age" />
+	<result column="gender" property="gender" />
+	<result column="role" property="role" />
+</resultMap>
 	
 	<!-- ユーザー１件登録-->
 	<insert id="insertOne">
@@ -26,4 +37,14 @@
 		 )
 		 
 	</insert>
+	
+	<!--loginユーザーの検索-->
+	<select id="findOne" resultMap="user">
+		select
+			*
+		from
+			m_user
+		where 
+			user_name = #{userName}
+	</select>
 </mapper>
