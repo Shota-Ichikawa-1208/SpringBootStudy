@@ -29,7 +29,7 @@
                      </form>
 				  </li>
                   <li class="nav-item">
-                    <a href="/user/cart" class="nav-link"><img src="images/cart_icon.png" width="70px" height="70px"
+                    <a href="/order_cart" class="nav-link"><img src="images/cart_icon.png" width="70px" height="70px"
                         title="カートへ" /></a>
                   </li>
                 </ul>
@@ -85,7 +85,7 @@
 				  </li>
                   <li class="nav-item">
                 <li class="nav-item">
-                  <a href="/user/cart" class="nav-link cart"><img src="images/cart_icon.png" width="70px"
+                  <a href="/order_cart" class="nav-link cart"><img src="images/cart_icon.png" width="70px"
                       height="70px" title="カートへ" /></a>
                 </li>
               </ul>
@@ -118,7 +118,7 @@
                 <div class="color-label">
                   <label class="label-position">色 : </label>
                 </div>
-                <form   onsubmit="addToCart(event);">
+                <form action="/user/addToCart" method="post">
                   <div class="form-group">
                     <div
                       class="list-group color-position color-box radio-no-style"
@@ -281,7 +281,6 @@
 	
 	<script th:src="@{/webjars/bootstrap/5.3.1/js/bootstrap.min.js}"></script>
     <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
-    <script th:src="@{/js/MyFirst.js}"></script>
 </body>
 
 </html>

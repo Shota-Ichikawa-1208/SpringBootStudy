@@ -28,7 +28,7 @@
                      </form>
 				  </li>
                   <li class="nav-item">
-                    <a href="/user/cart" class="nav-link"><img src="../images/cart_icon.png" width="70px" height="70px"
+                    <a href="/order_cart" class="nav-link"><img src="../images/cart_icon.png" width="70px" height="70px"
                         title="カートへ" /></a>
                   </li>
                 </ul>
@@ -84,7 +84,7 @@
 				  </li>
                   <li class="nav-item">
                 <li class="nav-item">
-                  <a href="/user/cart" class="nav-link cart"><img src="../images/cart_icon.png" width="70px"
+                  <a href="/order_cart" class="nav-link cart"><img src="../images/cart_icon.png" width="70px"
                       height="70px" title="カートへ" /></a>
                 </li>
               </ul>
@@ -94,6 +94,7 @@
 <main>
 <div>
 	<h1 class="mt-5">注文確認画面</h1>
+	<p th:text="${user_orderList}"></p>
 </div>
 </main>
 

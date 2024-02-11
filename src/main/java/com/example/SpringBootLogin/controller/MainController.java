@@ -1,5 +1,7 @@
 package com.example.SpringBootLogin.controller;
 
+import java.util.Locale;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.SpringBootLogin.Applicatin.Service.UserApplicationService;
 import com.example.SpringBootLogin.domain.user.model.MUser;
 import com.example.SpringBootLogin.domain.user.service.UserService;
 import com.example.SpringBootLogin.form.SignupForm;
@@ -26,13 +29,18 @@ public class MainController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private UserApplicationService userApplicationService;
+	
 	@GetMapping("/")
 	public String getIndex() {
 		return "index";
 	}
 	
 	@GetMapping("/t-shirt")
-	public String getT_shirt() {
+	public String getT_shirt(Model model, Locale locale) {
+//		Map<String,String> product_colorMap = userApplicationService.getProductColor(locale);
+//		model.addAttribute("product_colorMap", product_colorMap);
 		return "/product/t-shirt";
 	}
 	
@@ -56,6 +64,11 @@ public class MainController {
 	@GetMapping("/login_form")
 	public String getLogin(@ModelAttribute SignupForm form) {
 		return "login";
+	}
+	
+	@GetMapping("/order_cart")
+	public String getorder_cart() {
+		return "redirect:/user/addToCart";
 	}
 	
 	@PostMapping("/login")
