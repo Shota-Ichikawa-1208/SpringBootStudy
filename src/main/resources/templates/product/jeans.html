@@ -6,15 +6,15 @@
  <link rel="stylesheet" th:href="@{css/style.css}" />
 <title>Jeans</title>
 </head>
-<body>
-	<body style="padding-top: 5rem">
-    <div class="container-md">
-      <!--画面幅固定-->
-      <div class="row">
-        <div class="container-md a">
-          <div class="row">
-            <!--ハンバーガーメニュー-->
- <header>
+<body style="padding-top: 5rem">
+  <div class="container-md">
+    <!--画面幅固定-->
+    <div class="row">
+
+      <div class="container-md a">
+        <div class="row">
+          <!--ハンバーガーメニュー-->
+          <header>
             <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top navbar-style">
               <div class="container">
                 <a href="/"><img src="images/icon/shop_icon02.png"class="navbar-brand logo" ></a>
@@ -28,7 +28,7 @@
                      </form>
 				  </li>
                   <li class="nav-item">
-                    <a href="order.jsp" class="nav-link"><img src="images/cart_icon.png" width="70px" height="70px"
+                    <a href="/user/cart" class="nav-link"><img src="images/cart_icon.png" width="70px" height="70px"
                         title="カートへ" /></a>
                   </li>
                 </ul>
@@ -61,7 +61,7 @@
                     </li>
                     <li class="nav-item ms-auto">
                         <p class="nav-text-style">
-						<form action="/login_form" method="get">
+						<form action="/user_page_check" method="post">
                           <strong><input class="nav-link menu-font-style menu_MyPage_btn" type="submit" value="MyPage"></strong>
                          </form>
                         </p>
@@ -84,12 +84,13 @@
 				  </li>
                   <li class="nav-item">
                 <li class="nav-item">
-                  <a href="order.jsp" class="nav-link cart"><img src="images/cart_icon.png" width="70px"
+                  <a href="/user/cart" class="nav-link cart"><img src="images/cart_icon.png" width="70px"
                       height="70px" title="カートへ" /></a>
                 </li>
               </ul>
             </nav>
           </header>
+          <!-- ここまでヘッダー -->
             <h1 class="mt-5 border-bottom border-dark border-2 pb-1">
               ジーンズ色選択
             </h1>

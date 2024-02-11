@@ -12,8 +12,13 @@ import com.example.SpringBootLogin.domain.user.model.MUser;
 import com.example.SpringBootLogin.domain.user.service.UserService;
 import com.example.SpringBootLogin.form.SignupForm;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class MainController {
+	
+	@Autowired
+	private HttpSession session;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -36,13 +41,25 @@ public class MainController {
 		return "/product/jeans";
 	}
 	
+	@PostMapping("/user_page_check")
+	public String getUserPage(Model model) {
+		String userName = (String)session.getAttribute("userName");
+		
+		if(userName != null) {
+			model.addAttribute("userName", userName);
+			return "user/user_page";
+		}else {
+			return "redirect:/login_form";
+		}
+	}
+	
 	@GetMapping("/login_form")
 	public String getLogin(@ModelAttribute SignupForm form) {
 		return "login";
 	}
 	
 	@PostMapping("/login")
-	public String getUsrPage(Model model, @ModelAttribute SignupForm form) {
+	public String getlogin(Model model, @ModelAttribute SignupForm form) {
 		MUser result_user;
 //		formの値をMUser型に変換
 		MUser user = modelMapper.map(form, MUser.class);
@@ -52,12 +69,14 @@ public class MainController {
 		
 		if(result_user != null) {
 			String userName = result_user.getUserName();
-			model.addAttribute("userName", userName);
+	        session.setAttribute("userName", userName);
+	        model.addAttribute("userName", userName);
 			return "/user/user_page";
 		}else {
 	        return "redirect:/login_form";
 		}
 		
 	}
+	
 	
 }

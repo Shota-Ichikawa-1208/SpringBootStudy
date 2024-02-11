@@ -1,18 +1,32 @@
 package com.example.SpringBootLogin.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("user")
+@Slf4j
 public class UserpageController {
-//	
-//	@GetMapping("/user_page")
-//	public String getUserpage(Model model, @ModelAttribute SignupForm form) {
-//		String userName = form.getUserName();
-//		System.out.println(form);
-//		model.addAttribute("userName", userName);
-//		return "/user/user_page";
-//	}
+	
+	@Autowired
+	HttpSession session;
+	
+	@GetMapping("/logout")
+	public String getLogOut() {
+		String userName = (String)session.getAttribute("userName");
+		session.invalidate();
+		log.info(userName + "がログアウトしました");
+		return "redirect:/";
+	}
+	
+	@GetMapping("/cart")
+	public String getOrderCart() {
+		return "/user/order_cart";
+	}
 
 }
