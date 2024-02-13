@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class Order implements Serializable{
+	private String userName;
 	private String product_color;
 	private String size;
 	private Integer quantity;

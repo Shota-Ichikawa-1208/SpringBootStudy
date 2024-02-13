@@ -97,10 +97,34 @@ public class UserpageController {
 	}
 	
 	@PostMapping("/delete_order")
-	public String getdeleteOder(Model model, HttpSession session, @ModelAttribute("cart_index") int delete_index){
+	public String deleteOder(Model model, HttpSession session, @ModelAttribute("cart_index") int delete_index){
 		List<Order> user_orderList = (List<Order>) session.getAttribute("user_orderList");
 		user_orderList.remove(delete_index);
 	
+		return "redirect:addToCart";
+	}
+	
+	@PostMapping("/purchase")
+	public String Purchase(Model model, HttpSession session) {
+		String userName = (String)session.getAttribute("userName");
+		List<Order> user_orderList = (List<Order>) session.getAttribute("user_orderList");
+		//ログインしていない場合loginページに飛ばす
+		if (userName == null) {
+			return "redirect:/login_form";
+		}
+		
+		//注文が一件もない場合order_cartに戻す
+		if (user_orderList.size() == 0) {
+			return "redirect:addToCart";
+		}
+		
+		//Orderに注文者の名前を追加する
+		for(Order order : user_orderList) {
+			order.setUserName(userName);
+		}
+		orderService.order(user_orderList);
+		user_orderList.clear();
+		
 		return "redirect:addToCart";
 	}
 }

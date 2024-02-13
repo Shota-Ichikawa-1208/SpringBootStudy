@@ -7,7 +7,6 @@
 	<link rel="stylesheet" th:href="@{../webjars/bootstrap/css/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{../css/style.css}" />
 	<link rel="stylesheet" th:href="@{../css/order.css}" />
-</head>
 
 <body style="padding-top: 5rem">
 	<div class="container-md">
@@ -131,7 +130,7 @@
 											<th>注文内容</th>
 											<td><strong th:text="${orders} + 件"></strong></td>
 										</tr>
-										
+
 										<tr>
 											<th>商品合計</th>
 											<td><strong th:text="${total_amount} + '円'"></strong>
@@ -140,7 +139,7 @@
 								</div>
 							</div>
 							<div class="order_from">
-								<form action="/java_shop/Order_Confurmation" method="post">
+								<form action="/user/purchase" method="post">
 									<input type="submit" value="注文を確定する" id="order_button">
 								</form>
 							</div>
