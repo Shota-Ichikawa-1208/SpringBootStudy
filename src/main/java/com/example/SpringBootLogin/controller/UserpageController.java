@@ -122,9 +122,12 @@ public class UserpageController {
 		for(Order order : user_orderList) {
 			order.setUserName(userName);
 		}
-		orderService.order(user_orderList);
+		List<Order> not_orderedList = orderService.order(user_orderList, model);
 		user_orderList.clear();
 		
-		return "redirect:addToCart";
+//		if(not_orderedList.size() != 0) {
+//			model.addAttribute("not_orderedList", not_orderedList);
+//		}
+		return "/user/order_result";
 	}
 }

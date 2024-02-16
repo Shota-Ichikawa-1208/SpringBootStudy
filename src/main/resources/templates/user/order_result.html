@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{../css/style.css}" />
+	<link rel="stylesheet" th:href="@{../css/order.css}" />
+	<title>注文結果</title>
+</head>
+
+<body>
+	<h1>注文結果</h1>
+	<th:block th:if="${ordered_count != 0 }">
+		<p th:text="${ordered_count} + 件の注文が確定しました"></p>
+	</th:block>
+
+	<th:block th:if="${not_orderedList.size() != 0}">
+		<h3>下記の商品は在庫不足のため注文できませんでした</h3>
+		<table class="choice_table">
+			<tr>
+				<th>商品名</th>
+				<th>サイズ</th>
+				<th>枚数</th>
+			</tr>
+			<tr th:each="order : ${not_orderedList}">
+				<td class="choice_table_td" th:text="${order.getProduct_color()}"></td>
+				<td class="choice_table_td" th:text="${order.getSize()}"></td>
+				<td class="choice_table_td" th:text="${order.getQuantity()}"></td>
+			</tr>
+	</th:block>
+</body>
+
+</html>

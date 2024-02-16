@@ -3,16 +3,37 @@
 
 <!--Mapperとxmlのマッピング -->
 <mapper namespace="com.example.SpringBootLogin.repository.OrderMapper">
+	<!--注文の登録-->
 	<insert id="insertOder">
-		INSERT INTO order_table(
-			user_name
-			,product_name 
-			,size 
-			,quantity) 
-			VALUES (
-			#{userName}
-			,#{product_color}
-			,#{size}
-			,#{quantity})
+		INSERT INTO order_table
+			(user_name, product_name, SIZE, quantity) 
+		SELECT
+		      #{userName}
+		    , #{product_color}
+		    , #{size}
+		    , #{quantity} 
+		FROM
+		    product 
+		WHERE
+		    product_name = #{product_color} 
+		    AND stock - #{quantity} >= 0
+
 	</insert>
+	<!--在庫を減らす-->
+	<update id="reduceInventory">
+		UPDATE product 
+		SET
+		    stock = ( 
+		        ( 
+		            SELECT
+		                  stock 
+		            FROM
+		                product 
+		            WHERE
+		                product_name = #{product_color}
+		        ) - #{quantity}
+		    ) 
+		WHERE
+		    product_name = #{product_color};
+	</update>
 </mapper>

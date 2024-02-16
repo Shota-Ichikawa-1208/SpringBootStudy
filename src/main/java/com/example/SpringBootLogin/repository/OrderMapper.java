@@ -7,4 +7,6 @@ import com.example.SpringBootLogin.domain.order.model.Order;
 public interface OrderMapper {
 	//注文の登録
 	public int insertOder(Order order);
+	
+	public int reduceInventory(Order order);
 }
