@@ -20,20 +20,24 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	OrderMapper ordermapper;
-
-	private int TShirtPrice = 1000;
-	private int JeansPrice = 1000;
+	
+	//商品の単価を取得 html出力の際に用いる
+	public int getPrice(String productType) {
+		int price = ordermapper.getPrice(productType);
+		return price;
+	}
 
 	public int calculationTotal(List<Order> user_orderList) {
 		int total_amount = 0;
 		for (Order order : user_orderList) {
-			total_amount += order.getQuantity() * TShirtPrice;
+			//orderのpriceがStringのため
+			total_amount += order.getQuantity() * Integer.valueOf(order.getPrice().replace(",",""));
 		}
 		return total_amount;
 	}
 
 	@Transactional
-	public List<Order> order(List<Order> user_orderList, Model model) {
+	public void order(List<Order> user_orderList, Model model) {
 		int ordered_count = 0;
 		//在庫が足りず注文できなかった商品を格納
 		List<Order> not_orderedList =new ArrayList<>();
@@ -53,6 +57,5 @@ public class OrderServiceImpl implements OrderService {
 		if(not_orderedList.size() != 0) {
 			model.addAttribute("not_orderedList", not_orderedList);
 		}
-		return not_orderedList;
 	}
 }

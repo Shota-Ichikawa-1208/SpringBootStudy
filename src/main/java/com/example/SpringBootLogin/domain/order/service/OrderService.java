@@ -10,5 +10,8 @@ public interface OrderService {
 	public int calculationTotal(List<Order> user_orderList);
 	
 	//注文１件の登録
-	public List<Order> order(List<Order> user_orderList, Model model); 
+	public void order(List<Order> user_orderList, Model model); 
+	
+	//商品の単価取得
+	public int getPrice(String productType);
 }

@@ -10,5 +10,6 @@ public class Order implements Serializable{
 	private String product_color;
 	private String size;
 	private Integer quantity;
+	private String price;
 	private Integer subtotal;
 }
