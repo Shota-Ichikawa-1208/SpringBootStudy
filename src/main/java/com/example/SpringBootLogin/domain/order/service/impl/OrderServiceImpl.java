@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
 		for (Order one_order : user_orderList) {
 			int result = ordermapper.insertOder(one_order);
 			if (result == 0) {
-				log.info("在庫不足のため注文できませんでした");
+				log.info(one_order.getProduct_color() + "は在庫不足のため注文できませんでした");
 				not_orderedList.add(one_order);
 			}else {
 				ordermapper.reduceInventory(one_order);
@@ -57,5 +57,6 @@ public class OrderServiceImpl implements OrderService {
 		if(not_orderedList.size() != 0) {
 			model.addAttribute("not_orderedList", not_orderedList);
 		}
+		log.info(ordered_count + "件の注文登録");
 	}
 }

@@ -26,7 +26,7 @@ public class UserApplicationService {
 		String male = messageSource.getMessage("male",null,locale);
 		String female = messageSource.getMessage("female",null,locale);
 		genderMap.put(male, 1);
-		genderMap.put(female, ２);
+		genderMap.put(female, 2);
 		return genderMap;
 	}
 	

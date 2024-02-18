@@ -17,8 +17,10 @@ import com.example.SpringBootLogin.domain.user.service.UserService;
 import com.example.SpringBootLogin.form.SignupForm;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
 public class MainController {
 
 	@Autowired
@@ -51,7 +53,7 @@ public class MainController {
 		String tPrice = String.format("%,d",orderService.getPrice("tカラーTシャツ-black"));
 		model.addAttribute("tPrice", tPrice);
 
-		return "/product/t-shirt";
+		return "product/t-shirt";
 	}
 
 	@GetMapping("/jeans")
@@ -61,7 +63,7 @@ public class MainController {
 		String jPrice = String.format("%,d",orderService.getPrice("jジーンズ-Black"));
 		model.addAttribute("jPrice", jPrice);
 
-		return "/product/jeans";
+		return "product/jeans";
 	}
 
 	@PostMapping("/user_page_check")
@@ -83,7 +85,7 @@ public class MainController {
 
 	@GetMapping("/order_cart")
 	public String getorder_cart() {
-		return "redirect:/user/addToCart";
+		return "redirect:user/addToCart";
 	}
 
 	@PostMapping("/login")
@@ -98,8 +100,10 @@ public class MainController {
 			String userName = result_user.getUserName();
 			session.setAttribute("userName", userName);
 			model.addAttribute("userName", userName);
-			return "/user/user_page";
+			log.info(userName + "がログイン");
+			return "user/user_page";
 		} else {
+			log.info( "ログイン失敗");
 			return "redirect:/login_form";
 		}
 

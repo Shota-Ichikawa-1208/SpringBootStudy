@@ -47,7 +47,7 @@ public class SignupController {
 		
 //		sessionに追加のイメージ？
 		model.addAttribute("genderMap", genderMap);
-		return "/user/signup";
+		return "user/signup";
 	}
 		
 	@PostMapping("/signup")
@@ -74,7 +74,7 @@ public class SignupController {
 		log.info(form.toString());
 		
 		
-		return "/user/user_page";
+		return "user/user_page";
 		
 	}
 	

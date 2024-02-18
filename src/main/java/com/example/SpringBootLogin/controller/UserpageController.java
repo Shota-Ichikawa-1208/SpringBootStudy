@@ -40,7 +40,7 @@ public class UserpageController {
 	public String getLogOut() {
 		String userName = (String) session.getAttribute("userName");
 		session.invalidate();
-		log.info(userName + "がログアウトしました");
+		log.info(userName + "がログアウト");
 		return "redirect:/";
 	}
 
@@ -56,7 +56,7 @@ public class UserpageController {
 		model.addAttribute("user_orderList", user_orderList);
 		model.addAttribute("total_amount", total_amount);
 		model.addAttribute("orders", orders);
-		return "/user/order_cart";
+		return "user/order_cart";
 	}
 
 	@PostMapping("/addToCart")
@@ -93,7 +93,7 @@ public class UserpageController {
 			model.addAttribute("orders", orders);
 		}
 
-		return "/user/order_cart";
+		return "user/order_cart";
 	}
 
 	@PostMapping("/delete_order")
@@ -125,7 +125,7 @@ public class UserpageController {
 		}
 		orderService.order(user_orderList, model);
 		user_orderList.clear();
-
-		return "/user/order_result";
+		
+		return "user/order_result";
 	}
 }
