@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mapperとxmlのマッピング -->
+<mapper namespace="com.example.SpringBootLogin.repository.OrderMapper">
+	<!--注文の登録-->
+	<insert id="insertOder">
+		INSERT INTO order_table
+			(user_name, product_name, SIZE, quantity) 
+		SELECT
+		      #{userName}
+		    , #{product_color}
+		    , #{size}
+		    , #{quantity} 
+		FROM
+		    product 
+		WHERE
+		    product_name = #{product_color} 
+		    AND stock - #{quantity} >= 0
+
+	</insert>
+	<!--在庫を減らす-->
+	<update id="reduceInventory">
+		UPDATE product 
+		SET
+		    stock = ( 
+		        ( 
+		            SELECT
+		                  stock 
+		            FROM
+		                product 
+		            WHERE
+		                product_name = #{product_color}
+		        ) - #{quantity}
+		    ) 
+		WHERE
+		    product_name = #{product_color};
+	</update>
+	
+	<!--商品の単価取得-->
+	<select id="getPrice" parameterType="String" resultType="int">
+		SELECT
+		      price 
+		FROM
+		    product 
+		WHERE
+		    product_name = #{productType}
+
+	</select>
+</mapper>
